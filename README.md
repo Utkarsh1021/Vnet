@@ -93,8 +93,8 @@ npm start
 Create a `.env` file in backend folder and add:
 
 ```
-MONGO_URI=your_mongodb_connection_string  
-JWT_SECRET=your_secret_key  
+MONGO_URI=******************  
+JWT_SECRET=****************  
 ```
 
 ---
