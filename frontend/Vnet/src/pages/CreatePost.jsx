@@ -29,7 +29,7 @@ export default function CreatePost() {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/posts", {
+      const res = await fetch("https://vnet-backend.onrender.com/api/posts", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`, // Do NOT set Content-Type header for FormData

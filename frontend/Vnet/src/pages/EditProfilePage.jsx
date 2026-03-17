@@ -15,7 +15,7 @@ export default function EditProfilePage() {
   const fetchUser = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/protected/profile", {
+      const res = await fetch("https://vnet-backend.onrender.com/api/protected/profile", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -36,7 +36,7 @@ export default function EditProfilePage() {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/protected/profile", {
+      const res = await fetch("https://vnet-backend.onrender.com/api/protected/profile", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

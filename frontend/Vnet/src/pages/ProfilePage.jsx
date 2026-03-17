@@ -39,7 +39,7 @@ export default function ProfilePage() {
     if (!path) return "";
     if (path.startsWith("http://") || path.startsWith("https://")) return path;
     const cleanPath = path.replace(/\\/g, "/").replace(/^\/+/, "");
-    return `http://localhost:5000/${cleanPath}`;
+    return `https://vnet-backend.onrender.com/${cleanPath}`;
   };
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export default function ProfilePage() {
   const fetchUser = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/protected/profile", {
+      const res = await fetch("https://vnet-backend.onrender.com/api/protected/profile", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -68,7 +68,7 @@ export default function ProfilePage() {
   const fetchFollowers = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/protected/followers", {
+      const res = await fetch("https://vnet-backend.onrender.com/api/protected/followers", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -81,7 +81,7 @@ export default function ProfilePage() {
   const fetchFollowing = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/protected/following", {
+      const res = await fetch("https://vnet-backend.onrender.com/api/protected/following", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -96,7 +96,7 @@ export default function ProfilePage() {
     try {
       const token = localStorage.getItem("token");
       const res = await fetch(
-        `http://localhost:5000/api/protected/posts/user/${user._id}`,
+        `https://vnet-backend.onrender.com/api/protected/posts/user/${user._id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -112,7 +112,7 @@ export default function ProfilePage() {
     if (!window.confirm("Are you sure you want to delete this post?")) return;
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:5000/api/posts/${postId}`, {
+      const res = await fetch(`https://vnet-backend.onrender.com/api/posts/${postId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -131,7 +131,7 @@ export default function ProfilePage() {
       const token = localStorage.getItem("token");
       const endpoint = isFollowing ? "unfollow" : "follow";
       const res = await fetch(
-        `http://localhost:5000/api/protected/${endpoint}/${userId}`,
+        `https://vnet-backend.onrender.com/api/protected/${endpoint}/${userId}`,
         {
           method: "POST",
           headers: { Authorization: `Bearer ${token}` },

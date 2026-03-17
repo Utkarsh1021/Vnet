@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 // Create socket outside component with better config
-const socket = io("http://localhost:5000", {
+const socket = io("https://vnet-backend.onrender.com", {
   autoConnect: false,
   reconnection: true,
   reconnectionAttempts: 5,
@@ -40,7 +40,7 @@ export default function MessagesPage() {
     const fetchCurrentUser = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch("http://localhost:5000/api/protected/profile", {
+        const res = await fetch("https://vnet-backend.onrender.com/api/protected/profile", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -61,7 +61,7 @@ export default function MessagesPage() {
     try {
       const token = localStorage.getItem("token");
       const res = await fetch(
-        "http://localhost:5000/api/protected/chat-users",
+        "https://vnet-backend.onrender.com/api/protected/chat-users",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -216,7 +216,7 @@ export default function MessagesPage() {
         try {
           const token = localStorage.getItem("token");
           const res = await fetch(
-            `http://localhost:5000/api/protected/messages/${roomId}`,
+            `https://vnet-backend.onrender.com/api/protected/messages/${roomId}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -363,7 +363,7 @@ export default function MessagesPage() {
         formData.append("file", fileToUpload);
       }
 
-      const res = await fetch("http://localhost:5000/api/protected/messages", {
+      const res = await fetch("https://vnet-backend.onrender.com/api/protected/messages", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -574,7 +574,7 @@ export default function MessagesPage() {
                               msg.fileUrl.startsWith("http") ||
                               msg.fileUrl.startsWith("data:")
                                 ? msg.fileUrl
-                                : `http://localhost:5000${msg.fileUrl}`
+                                : `https://vnet-backend.onrender.com${msg.fileUrl}`
                             }
                             target="_blank"
                             rel="noopener noreferrer"
@@ -584,7 +584,7 @@ export default function MessagesPage() {
                                 msg.fileUrl.startsWith("http") ||
                                 msg.fileUrl.startsWith("data:")
                                   ? msg.fileUrl
-                                  : `http://localhost:5000${msg.fileUrl}`
+                                  : `https://vnet-backend.onrender.com${msg.fileUrl}`
                               }
                               alt={msg.fileName || "Image"}
                               className="max-w-full max-h-64 rounded-lg cursor-pointer hover:opacity-90 transition"
@@ -596,7 +596,7 @@ export default function MessagesPage() {
                               msg.fileUrl.startsWith("http") ||
                               msg.fileUrl.startsWith("blob:")
                                 ? msg.fileUrl
-                                : `http://localhost:5000${msg.fileUrl}`
+                                : `https://vnet-backend.onrender.com${msg.fileUrl}`
                             }
                             controls
                             className="max-w-full max-h-64 rounded-lg"
@@ -606,7 +606,7 @@ export default function MessagesPage() {
                             href={
                               msg.fileUrl.startsWith("http")
                                 ? msg.fileUrl
-                                : `http://localhost:5000${msg.fileUrl}`
+                                : `https://vnet-backend.onrender.com${msg.fileUrl}`
                             }
                             target="_blank"
                             rel="noopener noreferrer"

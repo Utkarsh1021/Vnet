@@ -34,7 +34,7 @@ export default function FeedPage() {
   const fetchPosts = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/protected/posts", {
+      const res = await fetch("https://vnet-backend.onrender.com/api/protected/posts", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -58,7 +58,7 @@ export default function FeedPage() {
     try {
       const token = localStorage.getItem("token");
       const res = await fetch(
-        `http://localhost:5000/api/protected/posts/${postId}/like`,
+        `https://vnet-backend.onrender.com/api/protected/posts/${postId}/like`,
         {
           method: "POST",
           headers: {
@@ -86,7 +86,7 @@ export default function FeedPage() {
     try {
       const token = localStorage.getItem("token");
       const res = await fetch(
-        `http://localhost:5000/api/protected/posts/${postId}/comments`,
+        `https://vnet-backend.onrender.com/api/protected/posts/${postId}/comments`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -109,7 +109,7 @@ export default function FeedPage() {
     try {
       const token = localStorage.getItem("token");
       const res = await fetch(
-        `http://localhost:5000/api/protected/posts/${postId}/comment`,
+        `https://vnet-backend.onrender.com/api/protected/posts/${postId}/comment`,
         {
           method: "POST",
           headers: {
@@ -152,7 +152,7 @@ export default function FeedPage() {
     try {
       const token = localStorage.getItem("token");
       const res = await fetch(
-        `http://localhost:5000/api/protected/posts/${postId}/view`,
+        `https://vnet-backend.onrender.com/api/protected/posts/${postId}/view`,
         {
           method: "POST",
           headers: {

@@ -11,7 +11,7 @@ const StartChatButton = ({ targetUserId }) => {
 
     try {
       // 1. Create or Get conversation via the new POST route
-      const res = await axios.post("http://localhost:5000/api/chat", {
+      const res = await axios.post("https://vnet-backend.onrender.com/api/chat", {
         senderId: currentUserId,
         receiverId: targetUserId
       });

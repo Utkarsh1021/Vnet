@@ -20,16 +20,16 @@ export default function LeftBar() {
     return () => { clearInterval(interval); window.removeEventListener('notificationsUpdated', handleUpdate); };
   }, []);
 
-  const fetchUser = async () => { try { const token = localStorage.getItem("token"); const res = await fetch("http://localhost:5000/api/protected/profile", { headers: { Authorization: `Bearer ${token}` }, }); const data = await res.json(); if (res.ok) setUser(data); } catch (error) { console.error("Error fetching user:", error); } };
-  const fetchSuggestedUsers = async () => { try { const token = localStorage.getItem("token"); const res = await fetch("http://localhost:5000/api/protected/suggested-users", { headers: { Authorization: `Bearer ${token}` }, }); const data = await res.json(); if (res.ok) setSuggestedUsers(data); } catch (error) { console.error("Error fetching suggested users:", error); } };
-  const fetchUnreadCount = async () => { try { const token = localStorage.getItem("token"); const res = await fetch("http://localhost:5000/api/protected/notifications", { headers: { Authorization: `Bearer ${token}` }, }); const data = await res.json(); if (res.ok) { const unread = data.filter(n => !n.read).length; setUnreadCount(unread); } } catch (error) { console.error("Error fetching notifications:", error); } };
-  const handleFollow = async (userId, isFollowing) => { try { const token = localStorage.getItem("token"); const endpoint = isFollowing ? "unfollow" : "follow"; const res = await fetch(`http://localhost:5000/api/protected/${endpoint}/${userId}`, { method: "POST", headers: { Authorization: `Bearer ${token}` }, }); if (res.ok) fetchSuggestedUsers(); } catch (error) { console.error("Error following user:", error); } };
+  const fetchUser = async () => { try { const token = localStorage.getItem("token"); const res = await fetch("https://vnet-backend.onrender.com/api/protected/profile", { headers: { Authorization: `Bearer ${token}` }, }); const data = await res.json(); if (res.ok) setUser(data); } catch (error) { console.error("Error fetching user:", error); } };
+  const fetchSuggestedUsers = async () => { try { const token = localStorage.getItem("token"); const res = await fetch("https://vnet-backend.onrender.com/api/protected/suggested-users", { headers: { Authorization: `Bearer ${token}` }, }); const data = await res.json(); if (res.ok) setSuggestedUsers(data); } catch (error) { console.error("Error fetching suggested users:", error); } };
+  const fetchUnreadCount = async () => { try { const token = localStorage.getItem("token"); const res = await fetch("https://vnet-backend.onrender.com/api/protected/notifications", { headers: { Authorization: `Bearer ${token}` }, }); const data = await res.json(); if (res.ok) { const unread = data.filter(n => !n.read).length; setUnreadCount(unread); } } catch (error) { console.error("Error fetching notifications:", error); } };
+  const handleFollow = async (userId, isFollowing) => { try { const token = localStorage.getItem("token"); const endpoint = isFollowing ? "unfollow" : "follow"; const res = await fetch(`https://vnet-backend.onrender.com/api/protected/${endpoint}/${userId}`, { method: "POST", headers: { Authorization: `Bearer ${token}` }, }); if (res.ok) fetchSuggestedUsers(); } catch (error) { console.error("Error following user:", error); } };
 
   const fetchUnreadMessagesCount = async () => {
     try {
       const token = localStorage.getItem("token");
       const res = await fetch(
-        "http://localhost:5000/api/protected/unread-messages-count",
+        "https://vnet-backend.onrender.com/api/protected/unread-messages-count",
         {
           headers: {
             Authorization: `Bearer ${token}`,

@@ -21,7 +21,7 @@ const Login = () => {
     if (!email || !password) return;
 
     try {
-      const res = await fetch("http://localhost:5000/api/login", {
+      const res = await fetch("https://vnet-backend.onrender.com/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

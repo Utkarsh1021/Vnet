@@ -33,7 +33,7 @@ export default function NavBar({ isVisible }) {
         setLoading(true);
         const token = localStorage.getItem("token");
         const res = await fetch(
-          `http://localhost:5000/api/protected/search-users?q=${query}`,
+          `https://vnet-backend.onrender.com/api/protected/search-users?q=${query}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
